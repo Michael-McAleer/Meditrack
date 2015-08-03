@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meditrack</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script type="text/javascript" src="Meditrack.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="Meditrack.css"/>
+</head>
+<body>
+    <div id= mainPanel>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#">Statistics</a></li>
+        <li><a href="#">Line Graph</a></li>
+        <li><a href="#">Player Comparison</a></li>
+      </ul>
+    </div>
+    <div id= badge>
+      <h2>Barcelona</h2>
+        <img src="519285-barcelona-logo.jpg" alt="Barcelona Logo" style="width:120px;height:128px;">
+    </div>
+    <div id= infoPanel>
+        <h3>McAleer tight calf</h3>
+    </div>
+    <div id= playerPanel>
+      <h4>Player</h4>
+      <table id="Players" border="5" color="grey" cellspacing="0" cellpadding="10">
+        <tr id="playerNames"></tr>
+      </table>
+      <h6>Add Player</h6>
+      <input type="text" id="playerName" placeholder="Enter Players Name" onkeypress="return saveToTable(event)" placeholder="Enter Players Name"/>
+      <button type="button" onclick='edit(key,pName)'>Edit</button>
+      <button type="button" onclick="del(key, pName)">Delete</buton>
+    </div>
+
+</body>
+</html>

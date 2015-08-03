@@ -1,0 +1,53 @@
+body{
+  background-color: black;
+}
+ #mainPanel{
+   color: white;
+}
+
+ #badge{
+  color: white;
+  position: absolute;
+  right: 0px;
+  width: 230px;
+  border:1px solid grey;
+  padding: 10px;
+  text-align: center;
+
+}
+
+#infoPanel{
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 230px;
+  height: 506px;
+  border:1px solid grey;
+  padding: 10px;
+
+}
+
+ #playerPanel{
+   color: white;
+   position: absolute;
+   left: 0px;
+   bottom: 0px;
+   height: 200px;
+   width: 846px;
+   border:1px solid grey;
+   padding: 10px;
+}
+
+#playerPanel input {
+  color: #000;
+}
+
+#playerPanel button {
+  color: #000;
+}
+
+table, th, td {
+border: 1px solid grey;
+padding: 10px;
+}
