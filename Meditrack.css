@@ -39,15 +39,15 @@ body{
    padding: 10px;
 }
 
-#playerPanel input {
-  color: #000;
+  #playerPanel input {
+    color: #000;
 }
 
-#playerPanel button {
-  color: #000;
+  #playerPanel button {
+    color: #000;
 }
 
-table, th, td {
-border: 1px solid grey;
-padding: 10px;
+  table, th, td {
+    border: 1px solid grey;
+    padding: 10px;
 }

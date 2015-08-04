@@ -1,4 +1,4 @@
-var playerNames = new Firebase("https://meditrack.firebaseio.com");
+var Player = new Firebase("https://meditrack.firebaseio.com");
 
 function saveToTable(event) {
     if (event.which == 13 || event.keyCode == 13) {
@@ -7,25 +7,31 @@ function saveToTable(event) {
           document.getElementById('playerNames').innerHTML += '<td>' + playerName + '</td>';
           saveToFB(playerName);
         }
+        document.getElementById('playerName').value = '';
+      return false;
     }
 };
 
 function saveToFB(playerName) {
-    playerNames.push({
+    Player.push({
         name: playerName
     });
 };
 
 function refreshUI(table) {
-    var lis = '';
+    var tab = '';
     for (var i = 0; i < table.length; i++) {
-        lis += '<li data-key="' + table[i].key + '">' + table[i].name + '</li>';
+        tab += '<td' + table[i].key + '">' + table[i].name + '</td>';
+        document.getElementById('playerNames').innerHTML += '<td>' + '</td>';
+        tab += '<td>' + '</td>'
     };
-    document.getElementById('playerNames').innerHTML = lis;
+
+    document.getElementById('playerNames').innerHTML = tab;
+
 };
 
 // this will get fired on inital load as well as when ever there is a change in the data
-playerNames.on("value", function(snapshot) {
+Player.on("value", function(snapshot) {
     var data = snapshot.val();
     var table = [];
     for (var key in data) {
@@ -43,7 +49,10 @@ playerNames.on("value", function(snapshot) {
     refreshUI(table);
 });
 
-function edit(key, pName) {
+
+function edit() {
+      var pName;
+      var key = prompt("Enter players name that you want to edit", key);
       var playerName = prompt("Update players name", pName);
       if (playerName && playerName.length > 0) {
         var updatePlayer = buildEndPoint(key);
@@ -61,8 +70,14 @@ function del(key, pName) {
     }
 }
 
-function getPlayerByName(name) {
-  playerNames.orderByValue().on("value", function(snapshot) {
+function buildEndPoint (key) {
+	return new Firebase('https://meditrack.firebaseio.com' + key);
+}
+
+
+function getPlayerByName() {
+  var name = prompt("Enter players name that you want to edit", name);
+  Player.orderByValue().on("value", function(snapshot) {
     snapshot.forEach(function(data) {
       var doc = data.val();
       if (doc.name === name) {
@@ -72,7 +87,7 @@ function getPlayerByName(name) {
 }
 
 function getPlayerByTeam(name) {
-  playerNames.orderByValue().on("value", function(snapshot) {
+  Player.orderByValue().on("value", function(snapshot) {
     snapshot.forEach(function(data) {
       var doc = data.val();
       if (doc.team === name) {
